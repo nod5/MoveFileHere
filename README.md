@@ -48,8 +48,13 @@ Place a MoveFileHere shortcut in the Windows 10 StartUp folder:
 **Q** Can I undo the move with `Ctrl+Z`?  
 **A** Not yet.  
 
+**Q** My browser or security app block or warn about the .exe file?  
+**A** Compiled AutoHotkey programs are sometimes [incorrectly flagged](https://www.autohotkey.com/docs/FAQ.htm#Virus ). You can alternatively install [AutoHotkey](https://www.autohotkey.com/) and compile the `.ahk` source file yourself (easy!) or run the `.ahk` source directly (even easier!).  
+
 **Q** Why was MoveFileHere made?  
 **A** Because the sequence Right click, Click "Show in folder", Ctrl+X, Alt+Tab Tab Tab, Ctrl+V is too long.  
+
+
 
 ## License  
 Free Software GPLv3 by https://github.com/nod5/  
