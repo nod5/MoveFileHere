@@ -2,7 +2,7 @@
 
 AutoHotkey tool to quickly move newest file from Downloads to the active File Explorer folder in Windows 10.
 
-Version 2020-12-30  -  Free software GPLv3  -  by Nod5  
+Version 2020-12-31  -  Free software GPLv3  -  by Nod5  
   
 ![MoveFileHere Screenshot](images/MoveFileHere1.png?raw=true)
 
@@ -20,8 +20,8 @@ Download [`MoveFileHere.exe`](https://github.com/nod5/MoveFileHere/releases/late
 
 ## Change hotkey and/or source folder  
 - Click "Settings" in tray icon menu or edit `MoveFileHere.ini` directly  
-- Change to any folder you want to move from.
-- Use AutoHotkey syntax to change the hotkey
+- Change to any folder you want to move from.  
+- Use AutoHotkey syntax to change the hotkey  
   https://www.autohotkey.com/docs/Hotkeys.htm  
   https://www.autohotkey.com/docs/KeyList.htm  
   Example: to change to `Control + F8` write `Hotkey=^F8`  
@@ -36,8 +36,14 @@ Place a MoveFileHere shortcut in the Windows 10 StartUp folder:
 `MoveFileHere.exe` works by itself. But if you instead want to run or compile the source `MoveFileHere.ahk` then first install [AutoHotkey](https://www.autohotkey.com/), unicode version.  
 
 ## Common questions
+**Q** What can I use MoveFileHere for?  
+**A** The default use case is to quickly move files from the Downloads folder. Another use case is if you regularly generate files in some other folder (e.g. video processing output) and want a hotkey to  quickly move them.  
+
 **Q** What if a file with the same name already exists?  
 **A** MoveFileHere asks if you want to overwrite.  
+
+**Q** Can I have different MoveFileHere hotkeys for different source folders?  
+**A** Yes, copy and rename `MoveFileHere.exe` to e.g. `MoveFileHere2.exe` and set a different hotkey and folder for the copy.  
 
 **Q** Can I undo the move with `Ctrl+Z`?  
 **A** Not yet.  
