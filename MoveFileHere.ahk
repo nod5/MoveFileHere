@@ -10,12 +10,13 @@ SetControlDelay, -1
 
 ; AutoHotkey tool to quickly move newest file from Downloads to the active File Explorer folder in Windows 10.
 
-; Version 2020-12-30  -  Free software GPLv3  -  by Nod5  
+; Version 2020-12-31  -  Free software GPLv3  -  by Nod5  
 
 ; source and documentation at https://github.com/nod5/MoveFileHere
 
 ; read settings from ini file
-vIniFile := A_ScriptDir "\MoveFileHere.ini"
+SplitPath, A_ScriptName, , , , vNameNoExt
+vIniFile := A_ScriptDir "\" vNameNoExt ".ini"
 IniRead, vHotkey      , % vIniFile, Settings, Hotkey      , %A_Space%
 IniRead, vSourceFolder, % vIniFile, Settings, SourceFolder, %A_Space%
 IniRead, vStartMessage, % vIniFile, Settings, StartMessage, %A_Space%
@@ -38,7 +39,7 @@ catch
 {
   ; on error open ini file for editing hotkey and show error popup
   Run % vIniFile
-  MsgBox, 5, , % "Error: Invalid hotkey: " vHotkey
+  MsgBox, 5, % vNameNoExt, % "Error: Invalid hotkey: " vHotkey
   IfMsgBox, Retry
   {
     Reload
@@ -55,7 +56,7 @@ vSourceFolder := RTrim(vSourceFolder, "\")
 if !InStr(FileExist(vSourceFolder), "D")
 {
   Run % vIniFile
-  MsgBox, 5, , % "Not found: `n" vSourceFolder
+  MsgBox, 5, % vNameNoExt, % "Not found: `n" vSourceFolder
   IfMsgBox, Retry
   {
     Reload
@@ -81,7 +82,7 @@ vMessage =
 (
 In File Explorer press [%vHotkey%] to move the latest file from [%vSourceFolder%] to the active folder.
 
-Edit [MoveFileHere.ini] to change hotkey and source folder.
+Edit [%vNameNoExt%.ini] to change hotkey and source folder.
 
 https://github.com/nod5/MoveFileHere
 )
@@ -90,12 +91,12 @@ https://github.com/nod5/MoveFileHere
 if (vStartMessage != "off")
 {
   IniWrite, % "off", % vIniFile, Settings, StartMessage
-  MsgBox,, MoveFileHere, % vMessage
+  MsgBox,, % vNameNoExt, % vMessage
 }
 return
 
 menu_about:
-  MsgBox,, MoveFileHere, % vMessage
+  MsgBox,, % vNameNoExt, % vMessage
 Return
 
 menu_settings:
