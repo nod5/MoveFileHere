@@ -225,12 +225,16 @@ ActiveExplorerPath()
   vHwnd := WinActive("ahk_class CabinetWClass")
   if (vHwnd)
     for window in ComObjCreate("Shell.Application").Windows
-      if (window.hwnd = vHwnd)
+    {
+      vWindowHwnd := ""
+      try vWindowHwnd := window.HWND
+      if (vWindowHwnd = vHwnd)
       {
         path := window.Document.Folder.Self.Path
         ; if start with "::" (for example Control Panel window) then return nothing
         return SubStr(path, 1, 2) = "::" ? "" : path
       }
+    }
 }
 
 
@@ -254,7 +258,9 @@ SelectNamedFileExplorer(vFilename, vHwnd := "")
 
   for window in ComObjCreate("Shell.Application").Windows
   {
-    if (window.HWND != vHwnd)
+    vWindowHwnd := ""
+    try vWindowHwnd := window.HWND
+    if (vWindowHwnd != vHwnd)
       continue
 
     sfv   := window.Document
