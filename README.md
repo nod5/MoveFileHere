@@ -2,7 +2,7 @@
 
 AutoHotkey tool to quickly move newest file from Downloads to the active File Explorer folder in Windows 10.
 
-Version 2020-12-31  -  Free software GPLv3  -  by Nod5  
+Version 2022-01-09  -  Free software GPLv3  -  by Nod5  
   
 ![MoveFileHere Screenshot](images/MoveFileHere1.png?raw=true)
 
@@ -38,6 +38,9 @@ Place a MoveFileHere shortcut in the Windows 10 StartUp folder:
 ## Common questions
 **Q** What can I use MoveFileHere for?  
 **A** The default use case is to quickly move files from the Downloads folder. Another use case is if you regularly generate files in some other folder (e.g. video processing output) and want a hotkey to  quickly move them.  
+
+**Q** Can MoveFileHere also move folders?  
+**A** No, only files, one at a time.  
 
 **Q** What if a file with the same name already exists?  
 **A** MoveFileHere asks if you want to overwrite.  
