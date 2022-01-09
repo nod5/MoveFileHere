@@ -10,7 +10,7 @@ SetControlDelay, -1
 
 ; AutoHotkey tool to quickly move newest file from Downloads to the active File Explorer folder in Windows 10.
 
-; Version 2020-12-31  -  Free software GPLv3  -  by Nod5  
+; Version 2022-01-09  -  Free software GPLv3  -  by Nod5  
 
 ; source and documentation at https://github.com/nod5/MoveFileHere
 
@@ -225,12 +225,16 @@ ActiveExplorerPath()
   vHwnd := WinActive("ahk_class CabinetWClass")
   if (vHwnd)
     for window in ComObjCreate("Shell.Application").Windows
-      if (window.hwnd = vHwnd)
+    {
+      vWindowHwnd := ""
+      try vWindowHwnd := window.HWND
+      if (vWindowHwnd = vHwnd)
       {
         path := window.Document.Folder.Self.Path
         ; if start with "::" (for example Control Panel window) then return nothing
         return SubStr(path, 1, 2) = "::" ? "" : path
       }
+    }
 }
 
 
@@ -254,7 +258,9 @@ SelectNamedFileExplorer(vFilename, vHwnd := "")
 
   for window in ComObjCreate("Shell.Application").Windows
   {
-    if (window.HWND != vHwnd)
+    vWindowHwnd := ""
+    try vWindowHwnd := window.HWND
+    if (vWindowHwnd != vHwnd)
       continue
 
     sfv   := window.Document
